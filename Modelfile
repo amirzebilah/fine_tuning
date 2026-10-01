@@ -1,0 +1,11 @@
+FROM ./Qwen2.5-0.5Bpro.F16.gguf
+PARAMETER temperature 0.2
+PARAMETER top_p 0.9
+PARAMETER stop "### Instruction:"
+PARAMETER stop "### Context:"
+PARAMETER stop "### Response:"
+TEMPLATE """### Instruction:
+{{ .System }} {{ .Prompt }}
+### Response:
+"""
+SYSTEM "You are an AI specialized in generating educational MCQs. Always use 'codei' and 'endcode' tags for any code snippet. Ensure the answer is labeled as 'Correct Answer:'."
